@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Php Curd Opearations</title>
 </head>
 <body>
@@ -12,7 +13,8 @@
         <div class="title">
             Registration Form
         </div>
-
+ 
+        <div class="form">
         <div class="input-field">
            <label> First Name </label>
            <input type="text" class="input">
@@ -38,7 +40,7 @@
          <div class="input-field">
             <label> Gender</label>
 
-            <Select>
+            <Select class="selectbox">
                 <Option>Select</Option>
                 <Option>Men</Option>
                 <Option>Women</Option>
@@ -58,7 +60,7 @@
 
          <div class="input-field">
            <label> Address </label>
-          <textarea></textarea>
+          <textarea class="textarea"></textarea>
         </div>
         
         <div class="input-field-terms">
@@ -67,13 +69,16 @@
                   <span class="checkmark"> </span>
            </label>
            <p> Agree to term and Conditions
-            
+
            </p>
+           <div class="input-field">
+           <input type="Submit" value="Register">
+        </div>
           
         </div>
 
 
-
+</div>
 </div>
     
 </body>
