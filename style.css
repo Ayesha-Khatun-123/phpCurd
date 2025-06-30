@@ -5,7 +5,7 @@
 
 }
 body{
-    background-color: plum;
+    background-color:plum;
     padding: 0 10px ;
     
 }
@@ -75,3 +75,99 @@ body{
 
 }
 
+.container .form  .input-field-terms  p {
+    font-size:  16px;
+    color: #757575
+}
+/* Wrapper */
+.input-field-terms .checkbox-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Hide default checkbox */
+.custom-checkbox input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+
+.custom-checkbox {
+  position: relative;
+  width: 15px;
+  height: 15px;
+  display: block;
+}
+
+
+.custom-checkbox .checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 15px;
+  height: 15px;
+  border: 1.5px solid plum;
+  border-radius: 3px;
+  background-color: white;
+}
+
+/* When checkbox is checked, fill with plum */
+.custom-checkbox input[type="checkbox"]:checked ~ .checkmark {
+  background-color: plum;
+}
+
+/* Tick mark */
+.custom-checkbox .checkmark::after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 5px;
+  top: 2px;
+  width: 4px;
+  height: 8px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+/* Show tick when checked */
+.custom-checkbox input[type="checkbox"]:checked ~ .checkmark::after {
+  display: block;
+}
+
+.input-field-terms {
+  margin-bottom: 15px;
+}
+
+.container .form .input-field .btn {
+  width: 100%;
+  padding: 10px;
+  font-size: 15px;
+  border: none;
+  background-color: plum;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+  outline: none;
+}
+.container .form .input-field:last-child{
+    margin-bottom: 0;
+}
+
+.container .form .input-field .btn:hover{
+    background-color: purple;
+}
+@media(max-width:420px){
+    .container .form .input-field{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .container .form .input-field label{
+        margin-bottom: 5px;
+    }
+    .container .form .input-field .terms{
+        flex-direction: row;
+    }
+}

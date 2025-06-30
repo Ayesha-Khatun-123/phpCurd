@@ -49,12 +49,12 @@
         </div>
 
         <div class="input-field">
-           <label> Email </label>
+           <label> Email Address</label>
            <input type="text" class="input">
         </div>
 
         <div class="input-field">
-           <label> Phone </label>
+           <label> Phone Number</label>
            <input type="text" class="input">
         </div>
 
@@ -62,20 +62,22 @@
            <label> Address </label>
           <textarea class="textarea"></textarea>
         </div>
-        
-        <div class="input-field-terms">
-           <label class="check"> 
-                  <input type="checkbox">
-                  <span class="checkmark"> </span>
-           </label>
-           <p> Agree to term and Conditions
+      
+ <div class="input-field-terms">
+  <div class="checkbox-wrapper">
+    <label class="custom-checkbox">
+      <input type="checkbox" >
+      <span class="checkmark"></span>
+    </label>
+    <p>Agree to terms and Conditions</p>
+  </div>
+</div>
 
-           </p>
-           <div class="input-field">
-           <input type="Submit" value="Register">
-        </div>
-          
-        </div>
+
+  <div class="input-field">
+    <input type="submit" value="Register" class="btn">
+  </div>
+</div>
 
 
 </div>
