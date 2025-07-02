@@ -6,13 +6,13 @@ $password="Ayesha@2003";
 $dbname ="responsiveform";
 $conn = mysqli_connect($servername,$username,$password,$dbname );
 
- if($conn){
+ //if($conn){
     //echo " Connection Establish";
 
- }
- else{
-    echo " Connection Failed"; 
+ //}
+ //else{
+  //  echo " Connection Failed"; 
     
- }
+ //}
 
 ?>
