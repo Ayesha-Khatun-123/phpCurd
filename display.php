@@ -18,6 +18,17 @@
                 width:86px;
                 cursor:pointer;
             }
+            .de{
+                background-color:red;
+                color:white;
+                border-radius:10px;
+                border:0;
+                outline:none;
+                height:25px;
+                width:86px;
+                cursor:pointer;
+
+            }
        </style>
 </head>
 </html>
@@ -34,32 +45,38 @@ $total = mysqli_num_rows($data);
 if ($total != 0) {
 
     ?>
-    <h2 align="center" ><mark>Displaying All Record </mark></h2>
-   <center> <table border="3" cellspacing="10" width="100%" align="center" >
+    <h2 align="center" >Displaying All Record </h2>
+   <center> <table border="1" cellspacing="10" width="100%" align="center" >
         <tr>
              <th width="5%"> Id</th>
             <th width="8%"> First Name</th>
             <th width="8%"> Last Name</th>
-            <th width="10%"> Gender </th>
-            <th width="20%"> Email Address </th>
+            <th width="5%"> Gender </th>
+            <th width="15%"> Email Address </th>
             <th width="10%"> Phone Number </th>
-            <th width="24%">Address </th>
-             <th width="15%">Operations</th>
+            <th width="9%"> Caste </th>
+            <th width="10%"> Language </th>
+            <th width="15%">Address </th>
+            <th width="15%">Operations</th>
        </tr>
     <?php
 
    while( $result = mysqli_fetch_assoc($data)){
   
      echo "<tr>
-             <td>".$result['id']."</td>
-              <td>".$result['fname']."</td>
-              <td>".$result['lname']." </td>
-              <td>".$result['gender']." </td>
-             <td> ".$result['email']. "</td>
-             <td>".$result['phone']." </td>
-             <td>".$result['address']." </td>
+             <td style='text-align:center;'>".$result['id']."</td>
+
+              <td style='text-align:center;'>".$result['fname']."</td>
+              <td style='text-align:center;'>".$result['lname']." </td>
+              <td style='text-align:center;'>".$result['gender']." </td>
+             <td style='text-align:center;'> ".$result['email']. "</td>
+             <td style='text-align:center;'>".$result['phone']." </td>
+             <td style='text-align:center;'>".$result['caste']." </td>
+             <td style='text-align:center;'>".$result['language']." </td>
+             <td style='text-align:center;'>".$result['address']." </td>
               
-           <td><a href='update_design.php?id=$result[id]'><input type='submit' value='Update' class=up </a></td>
+           <td><a href='update_design.php?id=$result[id]'><input type='submit' value='Update' class=up </a>
+           <a href='delete.php?id=$result[id]'><input type='submit' value='Delete' class=de  onclick= 'return checkDelete()'</a></td>
 
         
          </tr>";
@@ -73,5 +90,12 @@ if ($total != 0) {
 
 ?>
 </table>
+
 </center>
+<script>
+   function checkDelete(){
+     return confirm ('Are you sure your want to delete this record?');
+   }
+
+</script>
 

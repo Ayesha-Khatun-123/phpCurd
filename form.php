@@ -60,6 +60,41 @@
            <input type="text" class="input" name="phone" maxlength="10" required>
         </div>
 
+    <div class="input-field">
+    <label style="margin-right:100px">Caste</label>
+
+    <input type="radio" name="caste" value="General" required>
+    <label style="margin-left:4px">General</label>
+
+    <input type="radio" name="caste" value="OBC">
+    <label style="margin-left:4px">OBC</label>
+
+    <input type="radio" name="caste" value="SC">
+    <label style="margin-left:4px">SC</label>
+
+    <input type="radio" name="caste" value="ST">
+    <label style="margin-left:4px">ST</label>
+
+</div>
+   <div class="input-field">
+    <label style="margin-right:90px" required>Language</label>
+
+    <input type="checkbox" name="language[]" value="Bengali" >
+    <label style="margin-left:4px">Bengali</label>
+
+    <input type="checkbox" name="language[]" value="English">
+    <label style="margin-left:4px">English</label>
+
+    <input type="checkbox" name="language[]" value="Hindi">
+    <label style="margin-left:4px">Hindi</label>
+
+    <input type="checkbox" name="language[]" value="Other">
+    <label style="margin-left:4px">Other</label>
+
+    
+    
+</div>
+
          <div class="input-field">
            <label> Address </label>
           <textarea class="textarea" name="address"></textarea required>
@@ -98,17 +133,22 @@ if(isset($_POST['Register'])){
    $gen= $_POST['gender'];
    $email= $_POST['email'];
    $phone= $_POST['phone'];
+   $caste= $_POST['caste'];
+   $language=$_POST['language'];
+   $language1=implode(",",$language); //array to sting convet
    $add= $_POST['address'];
 
-   if($fname !="" && $lname !="" && $pass!="" &&  $conpass!="" && $gen !="" && $email !="" && $phone !="" && $add!="")
+   echo $language1;
+
+   if($fname !="" && $lname !="" && $pass!="" &&  $conpass!="" && $gen !="" && $email !="" && $phone !="" && $caste!=""&& $language1!="" && $add!="")
    {
 
-    $query ="INSERT INTO form (fname, lname, password, conpassword, gender, email, phone, address) 
-         VALUES('$fname','$lname','$pass','$conpass','$gen','$email','$phone','$add')";
+    $query ="INSERT INTO form (fname, lname, password, conpassword, gender, email, phone, caste , language,address) 
+         VALUES('$fname','$lname','$pass','$conpass','$gen','$email','$phone','$caste','$language1','$add')";
     $data =  mysqli_query($conn ,$query);
 
     if($data){
-      echo "Data Inserted Succesfully";
+      echo " Data Inserted Succesfully";
     }
     else{
       "Data Cannot Inserted";

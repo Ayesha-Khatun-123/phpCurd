@@ -85,11 +85,48 @@ $result = mysqli_fetch_assoc($data);
         </div>
 
         <div class="input-field">
-           <label> Phone Number</label>
-           <input type="text" value="<?php echo $result['phone'];?>" class="input"value="<?php echo $result['email'];?>" name="phone" maxlength="10" required>
-        </div>
+    <label style="margin-right:100px">Caste</label>
 
-         <div class="input-field">
+    <input type="radio" name="caste" value="General" <?php if($result['caste'] == 'General') echo 'checked'; ?> required>
+    <label style="margin-left:4px">General</label>
+
+    <input type="radio" name="caste" value="OBC" <?php if($result['caste'] == 'OBC') echo 'checked'; ?>>
+    <label style="margin-left:4px">OBC</label>
+
+    <input type="radio" name="caste" value="SC" <?php if($result['caste'] == 'SC') echo 'checked'; ?>>
+    <label style="margin-left:4px">SC</label>
+
+    <input type="radio" name="caste" value="ST" <?php if($result['caste'] == 'ST') echo 'checked'; ?>>
+    <label style="margin-left:4px">ST</label>
+</div> <!-- ✅ This was missing -->
+
+
+
+
+
+<div class="input-field">
+    <label style="margin-right:90px" required>Language</label>
+
+    <input type="checkbox" name="language[]" value="Bengali" >
+    <label style="margin-left:4px">Bengali</label>
+
+    <input type="checkbox" name="language[]" value="English">
+    <label style="margin-left:4px">English</label>
+
+    <input type="checkbox" name="language[]" value="Hindi">
+    <label style="margin-left:4px">Hindi</label>
+
+    <input type="checkbox" name="language[]" value="Other">
+    <label style="margin-left:4px">Other</label>
+
+    
+    
+</div>
+
+
+
+
+<div class="input-field">
            <label> Address </label>
           <textarea class="textarea" name="address" required>
           <?php
@@ -132,12 +169,13 @@ if(isset($_POST['update'])){
    $gen= $_POST['gender'];
    $email= $_POST['email'];
    $phone= $_POST['phone'];
+   $caste= $_POST['caste'];
    $add= $_POST['address'];
 
-   if($fname !="" && $lname !="" && $pass!="" &&  $conpass!="" && $gen !="" && $email !="" && $phone !="" && $add!="")
+   if($fname !="" && $lname !="" && $pass!="" &&  $conpass!="" && $gen !="" && $email !="" && $phone !="" && $caste !="" && $add!="")
    {
 
-    $query ="UPDATE form  set fname='$fname',lname='$lname',password='$pass',conpassword='$conpass',gender='$gen',email='$email',phone='$phone',address='$add' where id='$id'";
+    $query ="UPDATE form  set fname='$fname',lname='$lname',password='$pass',conpassword='$conpass',gender='$gen',email='$email',phone='$phone', caste='$caste'address='$add' where id='$id'";
     $data =  mysqli_query($conn ,$query);
 
     if($data){
