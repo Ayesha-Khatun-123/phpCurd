@@ -11,13 +11,18 @@
 <body>
 
     <div class="container">
-      <form  action="" method="POST">
+      <form  action="" method="POST" enctype="multipart/form-data">
 
         <div class="title">
             Registration Form
         </div>
  
         <div class="form">
+
+        <div class="input-field">
+           <label> Image </label>
+          <input type="file" name="uploadFile" style="width:100%;" required>
+        </div>
         <div class="input-field">
            <label> First Name </label>
            <input type="text" class="input" name="fname" required>
@@ -126,6 +131,13 @@
 
 <?php
 if(isset($_POST['Register'])){
+
+$filename=  $_FILES["uploadFile"]["name"];
+$tmpfilename= $_FILES["uploadFile"]["tmp_name"];
+$folder="images/".$filename;
+move_uploaded_file($tmpfilename,$folder);
+
+
    $fname= $_POST['fname'];
    $lname= $_POST['lname'];
    $pass= $_POST['password'];
@@ -138,20 +150,20 @@ if(isset($_POST['Register'])){
    $language1=implode(",",$language); //array to sting convet
    $add= $_POST['address'];
 
-   echo $language1;
+   //echo $language1;
 
    if($fname !="" && $lname !="" && $pass!="" &&  $conpass!="" && $gen !="" && $email !="" && $phone !="" && $caste!=""&& $language1!="" && $add!="")
    {
 
-    $query ="INSERT INTO form (fname, lname, password, conpassword, gender, email, phone, caste , language,address) 
-         VALUES('$fname','$lname','$pass','$conpass','$gen','$email','$phone','$caste','$language1','$add')";
+    $query ="INSERT INTO form (img_stu,fname, lname, password, conpassword, gender, email, phone, caste , language,address) 
+         VALUES('$folder','$fname','$lname','$pass','$conpass','$gen','$email','$phone','$caste','$language1','$add')";
     $data =  mysqli_query($conn ,$query);
 
     if($data){
-      echo " Data Inserted Succesfully";
+      echo " <script>alert('Data Inserted Succesfully');</script>";
     }
     else{
-      "Data Cannot Inserted";
+       echo " <script>alert('Data Inserted Failed');</script>";
     }
    }
    else{

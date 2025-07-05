@@ -27,11 +27,33 @@ $language1=explode(",",$language);
 <body>
 
 <div class="container">
-  <form action="" method="POST">
+  <form action="" method="POST" enctype="multipart/form-data">
 
     <div class="title">Update Student Details</div>
 
     <div class="form">
+
+    <div class="input-field">
+    <label>Current Image</label><br>
+   <?php
+if (!empty($result['img_stu'])) {
+?>
+    <input type="text" value="<?php echo $result['img_stu']; ?>" class="input" name="fname" required>
+<?php
+} else {
+    echo "<div style='color:red;'>No image found</div>";
+}
+?>
+
+</div>
+
+
+<div class="input-field">
+    <label>Upload New Image</label><br>
+    <input type="file" name="uploadFile" style="width:100%;">
+</div>
+
+
         <div class="input-field">
             <label>First Name</label>
             <input type="text" value="<?php echo $result['fname']; ?>" class="input" name="fname" required>
@@ -159,6 +181,14 @@ $language1=explode(",",$language);
 
 <?php
 if (isset($_POST['update'])) {
+ 
+$filename=  $_FILES["uploadFile"]["name"];
+$tmpfilename= $_FILES["uploadFile"]["tmp_name"];
+$folder="images/".$filename;
+move_uploaded_file($tmpfilename,$folder);
+
+
+    // The rest of your data
     $fname = $_POST['fname'];
     $lname = $_POST['lname'];
     $pass = $_POST['password'];
@@ -167,12 +197,12 @@ if (isset($_POST['update'])) {
     $email = $_POST['email'];
     $phone = $_POST['phone'];
     $caste = $_POST['caste'];
-   $language=$_POST['language'];
-   $language1=implode(",",$language); 
+    $language = $_POST['language'];
+    $language1 = implode(",", $language);
     $add = $_POST['address'];
 
-    if ($fname != "" && $lname != "" && $pass != "" && $conpass != "" && $gen != "" && $email != "" && $phone != "" && $caste != "" && $language1!="" && $add != "") {
-        $query = "UPDATE form SET fname='$fname', lname='$lname', password='$pass', conpassword='$conpass', gender='$gen', email='$email', phone='$phone', caste='$caste',language='$language1', address='$add' WHERE id='$id'";
+    if ($fname != "" && $lname != "" && $pass != "" && $conpass != "" && $gen != "" && $email != "" && $phone != "" && $caste != "" && $language1 != "" && $add != "") {
+        $query = "UPDATE form SET img_stu='$folder', fname='$fname', lname='$lname', password='$pass', conpassword='$conpass', gender='$gen', email='$email', phone='$phone', caste='$caste', language='$language1', address='$add' WHERE id='$id'";
         $data = mysqli_query($conn, $query);
 
         if ($data) {
@@ -185,4 +215,5 @@ if (isset($_POST['update'])) {
         echo "<script>alert('Please fill the form completely.');</script>";
     }
 }
+
 ?>

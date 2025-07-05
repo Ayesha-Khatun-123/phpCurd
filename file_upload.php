@@ -11,6 +11,26 @@ error_reporting(0);
 </head>
 
 <body>
+    <form action="#" method="POST" enctype="multipart/form-data">
+        <input type="file" name="uploadFile"><br> <br>
+        <input type="submit" name="submit" value="upload File">
+</form>
     
 </body>
 </html>
+
+<?php
+
+
+$filename=  $_FILES["uploadFile"]["name"];
+$tmpfilename= $_FILES["uploadFile"]["tmp_name"];
+$folder="images/".$filename;
+//echo $folder;
+move_uploaded_file($tmpfilename,$folder);
+
+ //print_r($_FILES["uploadFile"]);
+ echo "<img src='$folder' height='100px' width='100px'>";
+
+?>
+
+ 
